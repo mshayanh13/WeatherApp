@@ -103,7 +103,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
             DispatchQueue.main.async {
                 
-                self.updateForecaseUI()
+                if self.forecast != nil && self.forecast.weatherImageIds != nil && self.forecast.weatherImageIds.count > 0 {
+                    self.updateForecaseUI()
+                }
             }
             
         }
@@ -134,6 +136,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func locationButtonTapped(sender: UIButton) {
         
+        locationManager.startUpdatingLocation()
         getCurrentLocation()
         
     }
@@ -150,9 +153,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 
             }
             
-            self.locationManager.stopUpdatingLocation()
             self.getWeather()
             self.getForecast()
+            self.locationManager.stopUpdatingLocation()
         }
         
         
