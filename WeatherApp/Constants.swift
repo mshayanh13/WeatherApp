@@ -26,7 +26,7 @@ extension Int
     
     func kelvinToFarenheitString() -> String {
         
-        return "\(self.kelvinToFarenheit())°"
+        return "\(self.kelvinToFarenheit())°F"
         
     }
     
@@ -71,7 +71,7 @@ extension Double
     
     func kelvinToFarenheitString() -> String {
         
-        return "\(self.kelvinToFarenheit())°"
+        return "\(self.kelvinToFarenheit())°F"
         
     }
 }

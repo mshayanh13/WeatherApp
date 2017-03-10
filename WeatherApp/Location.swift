@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Location {
+class Location: NSObject, NSCoding {
     
     private var _city: String!
     private var _state: String
@@ -21,6 +21,23 @@ class Location {
         _state = state
         _zipCode = zip
         _countryCode = country
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        //self.init()
+        _city = aDecoder.decodeObject(forKey: "city") as! String!
+        _state = aDecoder.decodeObject(forKey: "state") as! String
+        _zipCode = aDecoder.decodeObject(forKey: "zipCode") as! String!
+        _countryCode = aDecoder.decodeObject(forKey: "countryCode") as! String!
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        
+        aCoder.encode(self._city, forKey: "city")
+        aCoder.encode(self._state, forKey: "state")
+        aCoder.encode(self._zipCode, forKey: "zipCode")
+        aCoder.encode(self._countryCode, forKey: "countryCode")
         
     }
     
